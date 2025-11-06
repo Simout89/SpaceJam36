@@ -20,6 +20,7 @@ public class Snake : MonoBehaviour
     [SerializeField] private GameObject segmentPrefab;
     
     private List<Transform> segments = new List<Transform>();
+    public List<Transform> Segments => segments;
 
     private void Awake()
     {

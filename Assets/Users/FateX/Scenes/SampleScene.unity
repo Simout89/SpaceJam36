@@ -209,6 +209,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5101796803513621631, guid: 46d0cb61cdd3f064fbd4b78c9fa319f2, type: 3}
   m_PrefabInstance: {fileID: 168327427}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &209999355
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 209999356}
+  - component: {fileID: 209999357}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &209999356
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209999355}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1596854518}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &209999357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209999355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e102f199330a4eac89910b11c829c97b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Users.FateX.Scripts.EnemySpawner
+  _enemyManager: {fileID: 2060215190}
+  enemyPrefab: {fileID: 2172284294067600571, guid: d917f5d771cd6b64c87d69199ca75052, type: 3}
 --- !u!1001 &212117660
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -981,6 +1027,8 @@ Transform:
   m_Children:
   - {fileID: 2109690512}
   - {fileID: 727117305}
+  - {fileID: 2060215189}
+  - {fileID: 209999356}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1669820933
@@ -1163,6 +1211,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5101796803513621631, guid: 46d0cb61cdd3f064fbd4b78c9fa319f2, type: 3}
   m_PrefabInstance: {fileID: 1687089921}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2060215188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2060215189}
+  - component: {fileID: 2060215190}
+  m_Layer: 0
+  m_Name: EnemyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2060215189
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060215188}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1596854518}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2060215190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060215188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c3db2b608484b43b601feab887d0bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
+  _snake: {fileID: 212117662}
+  enemySpeed: 2
 --- !u!1 &2109690511
 GameObject:
   m_ObjectHideFlags: 0

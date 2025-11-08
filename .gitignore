@@ -104,3 +104,7 @@ Assets/Plugins/Sirenix/Demos/Sample - RPG Editor.unitypackage.meta
 # User Settings
 UserSettings/Layouts/CurrentMaximizeLayout.dwlt
 UserSettings/Layouts/default-6000.dwlt
+/fmod_editor.log
+/Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset
+/Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset.meta
+/Assets/Plugins/FMOD/Resources/FMODStudioSettings.asset

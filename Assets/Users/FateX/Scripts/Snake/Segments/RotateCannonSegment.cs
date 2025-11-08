@@ -54,7 +54,7 @@ namespace Users.FateX.Scripts.Segments
                 timeToNextShot = Time.time + delayBetweenShots;
 
                 var newProjectile = LeanPool.Spawn(projectilePrefab, gunPivot.position, Quaternion.identity);
-                newProjectile.Initialize(direction.normalized, 10, 10);
+                newProjectile.Initialize(direction.normalized, 10, damage);
             }
         }
         public void OnDrawGizmos()

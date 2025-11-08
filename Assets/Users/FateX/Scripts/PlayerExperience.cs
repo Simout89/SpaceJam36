@@ -1,29 +1,45 @@
 ﻿using System;
 using UnityEngine;
+using Users.FateX.Scripts.View;
+using Zenject;
 
 namespace Users.FateX.Scripts
 {
-    public class PlayerExperience: MonoBehaviour
+    public class PlayerExperience
     {
-        private float nextLevelXp;
-        private float currentXp;
-        private float currentLevel = 1;
+        [Inject] private ChoiceCardMenu _choiceCardMenu;
+
+        public float NextLevelXp { get; private set; } = 5;
+        public float CurrentXp { get; private set; }
+        public float CurrentLevel { get; private set; } = 1;
 
         public event Action OnGetLevel;
+        public event Action OnChangeXp;
 
         public void AddXp(float value) // добавить модификаторы
         {
-            currentXp += value;
+            CurrentXp += value;
+            
+            OnChangeXp?.Invoke();
 
-            if (currentXp >= nextLevelXp)
+            if (CurrentXp >= NextLevelXp)
             {
-                UpdateLevelXpRequirement();
+                UpLevel();
             }
+        }
+
+        private void UpLevel()
+        {
+            _choiceCardMenu.SpawnCards(3);
+            UpdateLevelXpRequirement();
+            CurrentXp = 0;
+            CurrentLevel++;
+            OnChangeXp?.Invoke();
         }
 
         private void UpdateLevelXpRequirement()
         {
-            
+            NextLevelXp *= 1.5f;
         }
     }
 }

@@ -10,12 +10,15 @@ namespace Users.FateX.Scripts
         
         [SerializeField] private Snake _snakePrefab;
         [SerializeField] private Transform spawnPoint;
+        
+        public Snake Snake { get; private set; }
 
         public Snake SpawnSnake()
         {
             Snake snake = Instantiate(_snakePrefab);
             snake.Init(_inputService);
             snake.transform.position = spawnPoint.position;
+            Snake = snake;
             return snake;
         }
     }

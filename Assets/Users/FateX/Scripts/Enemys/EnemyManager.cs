@@ -35,6 +35,7 @@ public class EnemyManager : MonoBehaviour
     {
         _enemies.Remove(enemyBase);
         enemyBase.OnDie -= HandleDie;
+        enemyBase.DropXp();
         LeanPool.Despawn(enemyBase.gameObject);
     }
 

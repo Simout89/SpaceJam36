@@ -2,17 +2,26 @@
 using Lean.Pool;
 using UnityEngine;
 using Users.FateX.Scripts.Data;
+using Users.FateX.Scripts.Entity;
 
 namespace Users.FateX.Scripts
 {
-    public class EnemyBase: MonoBehaviour, IEnemy, IDamageable
+    public class EnemyBase: MonoBehaviour, IEnemy, IDamageable, IPoolable
     {
         [SerializeField] private EnemyData _enemyData;
         [SerializeField] private Rigidbody2D _rigidbody2D;
+
+        [SerializeField] private XpEntity _xp;
         
         public float CurrentHealth { get; private set; }
         public event Action<float> OnHealthChanged;
         public event Action<EnemyBase> OnDie;
+
+        private void Awake()
+        {
+            CurrentHealth = _enemyData.Health;
+        }
+
         public void Move(Vector3 direction)
         {
             // transform.position = transform.position + direction;
@@ -21,7 +30,15 @@ namespace Users.FateX.Scripts
 
         public void TakeDamage(DamageInfo damageInfo)
         {
-            OnDie?.Invoke(this);
+            CurrentHealth -= damageInfo.Amount;
+            
+            if(CurrentHealth <= 0)
+                OnDie?.Invoke(this);
+        }
+
+        public void DropXp()
+        {
+            LeanPool.Spawn(_xp, transform.position, Quaternion.identity);
         }
 
         private void OnCollisionEnter2D(Collision2D other)
@@ -34,6 +51,16 @@ namespace Users.FateX.Scripts
                 
                 snakeBodyPartHealth.TakeDamage(damageInfo);
             }
+        }
+
+        public void OnSpawn()
+        {
+            CurrentHealth = _enemyData.Health;
+        }
+
+        public void OnDespawn()
+        {
+            
         }
     }
 

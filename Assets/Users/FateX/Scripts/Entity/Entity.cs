@@ -1,4 +1,5 @@
 ﻿using System;
+using Lean.Pool;
 using UnityEngine;
 
 namespace Users.FateX.Scripts.Entity
@@ -8,6 +9,7 @@ namespace Users.FateX.Scripts.Entity
         public virtual void Collect()
         {
             OnCollect?.Invoke();
+            LeanPool.Despawn(gameObject);
         }
 
         public event Action OnCollect;

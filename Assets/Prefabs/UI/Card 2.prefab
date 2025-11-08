@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5816315617705874483}
   - component: {fileID: 1919904358786184543}
   m_Layer: 5
-  m_Name: Card
+  m_Name: Card 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4c6efd675e4769a9f81a0701ebf27a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Users.FateX.Scripts.View.ChoiceCard
-  <SnakeBodyPart>k__BackingField: {fileID: 2843160220030740129, guid: be2cc357e471f684d96e1680176e8b5f, type: 3}
+  <SnakeBodyPart>k__BackingField: {fileID: 2843160220030740129, guid: ac867bf77fc9b6642b55a4c9ca046bd0, type: 3}
   <Button>k__BackingField: {fileID: 1919904358786184543}
 --- !u!114 &1919904358786184543
 MonoBehaviour:
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0421\u0442\u0440\u0435\u043B\u044F\u0435\u0442 \u043F\u0440\u044F\u043C\u043E"
+  m_text: "\u0426\u0435\u043B\u0438\u0442\u0441\u044F \u0441\u0430\u043C\u0430"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

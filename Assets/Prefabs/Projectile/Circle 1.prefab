@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -979193486795656574}
   - component: {fileID: -1743014544969378299}
   m_Layer: 8
-  m_Name: Circle
+  m_Name: Circle 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: -2769276164147967396, guid: ab8a199f41fd59d4f92a42449e3f6672, type: 3}
+  m_Sprite: {fileID: -1924176446, guid: ab8a199f41fd59d4f92a42449e3f6672, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -168,4 +168,4 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.14688142
+  m_Radius: 0.15809952

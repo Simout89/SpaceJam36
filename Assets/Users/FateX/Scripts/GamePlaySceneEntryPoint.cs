@@ -17,6 +17,7 @@ namespace Users.FateX.Scripts
         [Inject] private SnakeSpawner _snakeSpawner;
         [Inject] private EnemyManager _enemyManager;
         [Inject] private HealthView _healthView;
+        [Inject] private LootManager _lootManager;
 
         public void Initialize()
         {
@@ -27,6 +28,8 @@ namespace Users.FateX.Scripts
             _enemyManager.SetSnake(snake);
             
             _healthView.Init(snake.GetComponent<SnakeHealth>());
+
+            _lootManager.Init(snake.GetComponent<SnakeInteraction>());
 
             WaveData waveData = Resources.LoadAll<WaveData>("Data/Waves")[0];
             

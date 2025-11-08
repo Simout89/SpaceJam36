@@ -76,6 +76,16 @@ public class Snake : MonoBehaviour
         
     }
     
+    public void Grow(SnakeBodyPart snakeBodyPart)
+    {
+        var newSegment = Instantiate(snakeBodyPart);
+        Transform last = segments[segments.Count - 1];
+        newSegment.transform.position = last.position;
+        segments.Add(newSegment.transform);
+        snakeHealth.Add(newSegment.SnakeBodyPartHealth);
+        
+    }
+    
 #if UNITY_EDITOR
     [ContextMenu("GrowDebug")]
     public void GrowDebug()

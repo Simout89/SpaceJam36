@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{532d12e4-f9b9-47f5-b7d1-4a87b7793967}">
+		<property name="assetPath">
+			<value>XPPickUP.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.4330385487528345</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{143f8828-7dd7-489e-a1ca-058dfe3feee1}</destination>
+		</relationship>
+	</object>
+</objects>

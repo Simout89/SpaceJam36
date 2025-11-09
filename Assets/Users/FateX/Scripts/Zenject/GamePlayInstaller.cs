@@ -15,9 +15,9 @@ namespace Скриптерсы.Zenject
             Container.BindInterfacesAndSelfTo<SnakeSpawner>().FromComponentsInHierarchy().AsSingle();
             Container.BindInterfacesAndSelfTo<HealthView>().FromComponentsInHierarchy().AsSingle();
             Container.BindInterfacesAndSelfTo<ChoiceCardMenu>().FromComponentsInHierarchy().AsSingle();
+            Container.BindInterfacesAndSelfTo<EnemyManager>().FromComponentsInHierarchy().AsSingle();
             
             Container.BindInterfacesAndSelfTo<EnemySpawner>().FromNewComponentOnNewGameObject().AsSingle();
-            Container.BindInterfacesAndSelfTo<EnemyManager>().FromNewComponentOnNewGameObject().AsSingle();
             
             Container.BindInterfacesAndSelfTo<ActiveEntities>().AsSingle();
             Container.BindInterfacesAndSelfTo<GameTimer>().AsSingle();

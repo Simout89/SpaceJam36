@@ -4,9 +4,12 @@ using Lean.Pool;
 using UnityEngine;
 using DG.Tweening;
 using Users.FateX.Scripts;
+using Users.FateX.Scripts.View;
 
 public class EnemyManager : MonoBehaviour
 {
+    [SerializeField] private DamageCounter _damageCounter;
+    
     private Snake _snake;
     private float enemySpeed = 100f;
     
@@ -29,8 +32,16 @@ public class EnemyManager : MonoBehaviour
 
         enemyBase.OnDie += HandleDie;
         
+        enemyBase.OnTakeDamage += (newHealth) => HandleHealthChanged(enemyBase, newHealth);
+        
         // Запускаем покачивание
         StartSwing(enemyBase);
+    }
+
+    private void HandleHealthChanged(EnemyBase enemyBase, float newHealth)
+    {
+        var newDamageCounter = LeanPool.Spawn(_damageCounter, enemyBase.transform.position, Quaternion.identity);
+        newDamageCounter.Init(newHealth);
     }
 
     private void StartSwing(EnemyBase enemy)
@@ -47,6 +58,8 @@ public class EnemyManager : MonoBehaviour
         foreach (var enemy in _enemies)
         {
             enemy.OnDie -= HandleDie;
+            enemy.OnTakeDamage -= (newHealth) => HandleHealthChanged(enemy, newHealth);
+
             DOTween.Kill(enemy);
         }
     }
@@ -56,6 +69,8 @@ public class EnemyManager : MonoBehaviour
         _enemies.Remove(enemyBase);
         _originalScales.Remove(enemyBase);
         enemyBase.OnDie -= HandleDie;
+        enemyBase.OnTakeDamage -= (newHealth) => HandleHealthChanged(enemyBase, newHealth);
+
         
         // Останавливаем анимацию покачивания
         DOTween.Kill(enemyBase);

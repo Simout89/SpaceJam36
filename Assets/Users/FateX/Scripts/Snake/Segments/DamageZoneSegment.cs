@@ -7,6 +7,8 @@ namespace Users.FateX.Scripts.Segments
     {
         [SerializeField] private float damage = 3;
         [SerializeField] private float radius = 5f;
+        [SerializeField] private float delayBetweenShots = 1f;
+        private float timeToNextShot = 0;
 
         [SerializeField] private TriggerDetector _triggerDetector;
 
@@ -24,14 +26,12 @@ namespace Users.FateX.Scripts.Segments
         {
             Debug.Log(obj);
             
-            if (obj.gameObject.TryGetComponent(out EnemyBase enemyBase))
-            {
-                enemyBase.TakeDamage(new DamageInfo(damage));
-            }
+            //if (obj.gameObject.TryGetComponent(out EnemyBase enemyBase))
+            //{
+            //    enemyBase.TakeDamage(new DamageInfo(damage));
+            //}
         }
 
-        private float delayBetweenShots = 1f;
-        private float timeToNextShot = 0;
         
         public void FixedUpdate()
         {
@@ -51,7 +51,7 @@ namespace Users.FateX.Scripts.Segments
 
             foreach (var VARIABLE in colliders)
             {
-                if (VARIABLE.TryGetComponent(out EnemyBase enemyBase))
+                if (VARIABLE.TryGetComponent(out EnemyBase enemyBase) && !enemyBase.AlreadyDie)
                 {
                     enemyBase.TakeDamage(new DamageInfo(damage));
                 }

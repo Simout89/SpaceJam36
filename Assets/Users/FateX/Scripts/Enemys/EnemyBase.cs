@@ -25,9 +25,10 @@ namespace Users.FateX.Scripts
         
         public float CurrentHealth { get; private set; }
         public event Action<float> OnHealthChanged;
+        public event Action<float> OnTakeDamage;
         public event Action<EnemyBase> OnDie;
 
-        private bool alreadyDie = false;
+        public bool AlreadyDie { get; private set; }
 
         public bool Visible { get; private set; } = false;
 
@@ -53,7 +54,7 @@ namespace Users.FateX.Scripts
 
         public void Move(Vector3 direction)
         {
-            if(alreadyDie)
+            if(AlreadyDie)
                 return;
             
             _rigidbody2D.linearVelocity = direction;
@@ -71,14 +72,15 @@ namespace Users.FateX.Scripts
             
             RuntimeManager.PlayOneShot("event:/SFX/Enemy/e_Death");
 
+            OnTakeDamage?.Invoke(damageInfo.Amount);
             OnHealthChanged?.Invoke(CurrentHealth);
             
             if(CurrentHealth <= 0)
             {
-                if(alreadyDie)
+                if(AlreadyDie)
                     return;
 
-                alreadyDie = true;
+                AlreadyDie = true;
 
                 DropXp();
                 
@@ -92,7 +94,7 @@ namespace Users.FateX.Scripts
         private void PlayDamageIndication()
         {
             // Останавливаем предыдущую анимацию, если она была
-            _damageSequence?.Kill();
+            _damageSequence?.Complete();
 
             _damageSequence = DOTween.Sequence();
 
@@ -119,7 +121,7 @@ namespace Users.FateX.Scripts
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if(alreadyDie)
+            if(AlreadyDie)
                 return;
             
             if(other.gameObject.TryGetComponent(out SnakeBodyPartHealth snakeBodyPartHealth))
@@ -134,7 +136,7 @@ namespace Users.FateX.Scripts
         {
             Visible = false;
             
-            alreadyDie = false;
+            AlreadyDie = false;
             
             CurrentHealth = _enemyData.Health;
 

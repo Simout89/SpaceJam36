@@ -12,7 +12,7 @@ namespace Users.FateX.Scripts
 
         public float NextLevelXp { get; private set; } = 5;
         public float CurrentXp { get; private set; }
-        public float CurrentLevel { get; private set; } = 1;
+        public float CurrentLevel { get; private set; } = 0;
 
         public event Action OnGetLevel;
         public event Action OnChangeXp;

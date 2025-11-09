@@ -37,7 +37,7 @@ public class Snake : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (_rb == null) return;
 

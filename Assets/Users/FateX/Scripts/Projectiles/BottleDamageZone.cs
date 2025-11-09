@@ -34,7 +34,7 @@ namespace Users.FateX.Scripts
             
             foreach (var collider in colliders)
             {
-                if (collider.TryGetComponent(out EnemyBase enemy))
+                if (collider.TryGetComponent(out EnemyBase enemy) && !enemy.AlreadyDie)
                 {
                     enemy.TakeDamage(new DamageInfo(damage));
                 }

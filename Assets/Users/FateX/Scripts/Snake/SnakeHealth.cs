@@ -76,6 +76,9 @@ namespace Users.FateX.Scripts
             {
                 OnDeath?.Invoke();
             }
+            
+            RuntimeManager.PlayOneShot("event:/SFX/Player/p_TakeDamage");
+            
             OnHealthChanged?.Invoke();
         }
     }

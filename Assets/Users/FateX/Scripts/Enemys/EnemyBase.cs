@@ -16,7 +16,6 @@ namespace Users.FateX.Scripts
         
         [Header("Damage Indication")]
         [SerializeField] private SpriteRenderer _spriteRenderer;
-        [SerializeField] private Color _damageColor = Color.red;
         [SerializeField] private float _damageDuration = 0.2f;
         [SerializeField] private float _damageScalePunch = 0.15f;
         
@@ -61,16 +60,21 @@ namespace Users.FateX.Scripts
         {
             // Останавливаем предыдущую анимацию, если она была
             _damageSequence?.Kill();
-            
+
             _damageSequence = DOTween.Sequence();
-            
-            // Изменение цвета
+
+            // Изменение цвета (мигание)
             if (_spriteRenderer != null)
             {
-                _damageSequence.Append(_spriteRenderer.DOColor(_damageColor, _damageDuration / 2f));
-                _damageSequence.Append(_spriteRenderer.DOColor(_originalColor, _damageDuration / 2f));
+                _spriteRenderer.material.SetFloat("_FlashAmount", 1);
+                _damageSequence.Append(
+                    DOTween.To(() => _spriteRenderer.material.GetFloat("_FlashAmount"), 
+                        x => _spriteRenderer.material.SetFloat("_FlashAmount", x), 
+                        0f, 
+                        _damageDuration)
+                );
             }
-            
+
             // Эффект "удара" (небольшое увеличение и уменьшение размера)
             _damageSequence.Join(transform.DOPunchScale(Vector3.one * _damageScalePunch, _damageDuration, 1, 0.5f));
         }
@@ -93,6 +97,8 @@ namespace Users.FateX.Scripts
         public void OnSpawn()
         {
             CurrentHealth = _enemyData.Health;
+
+            _spriteRenderer.material.SetFloat("_FlashAmount", 0);
             
             // Сбрасываем цвет и масштаб при спавне
             if (_spriteRenderer != null)

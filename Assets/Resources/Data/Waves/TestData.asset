@@ -15,7 +15,7 @@ MonoBehaviour:
   WaveChangeSpawns:
   - <DiffMarker>k__BackingField: 0
     <Enemy>k__BackingField: {fileID: 2172284294067600571, guid: da532416fe9f3ab4b9f56341054b7298, type: 3}
-  - <DiffMarker>k__BackingField: 15
+  - <DiffMarker>k__BackingField: 5
     <Enemy>k__BackingField: {fileID: 2172284294067600571, guid: fee591ff17534c54e981b30e16469c67, type: 3}
   - <DiffMarker>k__BackingField: 30
     <Enemy>k__BackingField: {fileID: 2172284294067600571, guid: 0d8a4eb3aba7d264db4f5c17a949d120, type: 3}

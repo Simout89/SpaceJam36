@@ -199,7 +199,7 @@ MonoBehaviour:
   _enemyData: {fileID: 11400000, guid: c096c030908f71e43a45145678c9c883, type: 2}
   _rigidbody2D: {fileID: 5204054223735525099}
   _xp: {fileID: -2962457476948072884, guid: b9b414b1a8c0078409c32ec99f8b9d1b, type: 3}
-  _spriteRenderer: {fileID: 0}
+  _spriteRenderer: {fileID: 2061107681081484524}
   _damageColor: {r: 1, g: 1, b: 1, a: 1}
   _damageDuration: 0.2
   _damageScalePunch: 0.15
@@ -265,4 +265,4 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.6
+  m_Radius: 0.44

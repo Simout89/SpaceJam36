@@ -109,8 +109,7 @@ MonoBehaviour:
   _enemyData: {fileID: 11400000, guid: 88116dc9a7303664080f320c0344a310, type: 2}
   _rigidbody2D: {fileID: 3453197126848277838}
   _xp: {fileID: -2962457476948072884, guid: b9b414b1a8c0078409c32ec99f8b9d1b, type: 3}
-  _spriteRenderer: {fileID: 0}
-  _damageColor: {r: 1, g: 1, b: 1, a: 1}
+  _spriteRenderer: {fileID: 2061107681081484524}
   _damageDuration: 0.2
   _damageScalePunch: 0.15
 --- !u!50 &3453197126848277838

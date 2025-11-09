@@ -17,6 +17,8 @@ namespace Users.FateX.Scripts
         public float CurrentHealth { get; private set; }
         public event Action OnHealthChanged;
 
+        public event Action OnDeath;
+
         private void OnEnable()
         {
             headHealth.OnHealthChanged += HandleHealthChanged;
@@ -54,9 +56,7 @@ namespace Users.FateX.Scripts
 
             if (CurrentHealth <= 0)
             {
-                RuntimeManager.PlayOneShot("event:/SFX/Player/p_Death");
-                DOTween.KillAll();
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                OnDeath?.Invoke();
             }
             OnHealthChanged?.Invoke();
         }

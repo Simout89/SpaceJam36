@@ -26,6 +26,8 @@ namespace Скриптерсы.Zenject
             Container.BindInterfacesAndSelfTo<PlayerExperience>().AsSingle();
             Container.BindInterfacesAndSelfTo<LootManager>().AsSingle();
             Container.BindInterfacesAndSelfTo<GameStateManager>().AsSingle();
+            Container.BindInterfacesAndSelfTo<DeathHandler>().AsSingle();
+            Container.BindInterfacesAndSelfTo<UserInfo>().AsSingle();
         }
     }
 }

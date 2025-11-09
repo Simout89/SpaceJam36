@@ -2,6 +2,7 @@
 using UnityEngine;
 using Users.FateX.Scripts.Data.WaveData;
 using Users.FateX.Scripts.Enemys;
+using Users.FateX.Scripts.LeaderBoard;
 using Users.FateX.Scripts.View;
 using Zenject;
 using Скриптерсы.Services;
@@ -19,6 +20,9 @@ namespace Users.FateX.Scripts
         [Inject] private HealthView _healthView;
         [Inject] private LootManager _lootManager;
 
+        [Inject] private LeaderboardManager _leaderboardManager;
+        [Inject] private DeathHandler _deathHandler;
+
         public void Initialize()
         {
             Debug.Log("W");
@@ -28,6 +32,7 @@ namespace Users.FateX.Scripts
             _enemyManager.SetSnake(snake);
             
             _healthView.Init(snake.GetComponent<SnakeHealth>());
+            _deathHandler.Init(snake.GetComponent<SnakeHealth>());
 
             _lootManager.Init(snake.GetComponent<SnakeInteraction>());
 

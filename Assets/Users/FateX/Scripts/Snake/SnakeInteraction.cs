@@ -23,9 +23,14 @@ namespace Users.FateX.Scripts
         {
             if(other.TryGetComponent(out ICollectable collectable))
             {
-                collectable.Collect();
+                collectable.Collect(transform);
                 OnCollect?.Invoke(other.gameObject);
             }
         }
+    }
+
+    public interface ICollectable
+    {
+        public void Collect(Transform pos);
     }
 }

@@ -13,6 +13,7 @@ namespace Users.FateX.Scripts
         [SerializeField] private EnemyData _enemyData;
         [SerializeField] private Rigidbody2D _rigidbody2D;
         [SerializeField] private XpEntity _xp;
+        [field: SerializeField] public Transform body { get; private set; }
         
         [Header("Damage Indication")]
         [SerializeField] private SpriteRenderer _spriteRenderer;
@@ -26,6 +27,10 @@ namespace Users.FateX.Scripts
         public event Action<float> OnHealthChanged;
         public event Action<EnemyBase> OnDie;
 
+        private bool alreadyDie = false;
+
+        public bool Visible { get; private set; } = false;
+
         private void Awake()
         {
             CurrentHealth = _enemyData.Health;
@@ -36,13 +41,29 @@ namespace Users.FateX.Scripts
             }
         }
 
+        private void OnBecameVisible()
+        {
+            Visible = true;
+        }
+
+        private void OnBecameInvisible()
+        {
+            Visible = false;
+        }
+
         public void Move(Vector3 direction)
         {
+            if(alreadyDie)
+                return;
+            
             _rigidbody2D.linearVelocity = direction;
         }
 
         public void TakeDamage(DamageInfo damageInfo)
         {
+            if(!Visible)
+                return;
+            
             CurrentHealth -= damageInfo.Amount;
             
             // Визуальная индикация урона
@@ -53,7 +74,19 @@ namespace Users.FateX.Scripts
             OnHealthChanged?.Invoke(CurrentHealth);
             
             if(CurrentHealth <= 0)
-                OnDie?.Invoke(this);
+            {
+                if(alreadyDie)
+                    return;
+
+                alreadyDie = true;
+
+                DropXp();
+                
+                _spriteRenderer.material.DOFloat(1f, "_DissolveAmount", 0.5f).OnComplete((() =>
+                {
+                    OnDie?.Invoke(this);
+                }));
+            }
         }
 
         private void PlayDamageIndication()
@@ -86,6 +119,9 @@ namespace Users.FateX.Scripts
 
         private void OnCollisionEnter2D(Collision2D other)
         {
+            if(alreadyDie)
+                return;
+            
             if(other.gameObject.TryGetComponent(out SnakeBodyPartHealth snakeBodyPartHealth))
             {
                 DamageInfo damageInfo = new DamageInfo(2);
@@ -96,9 +132,14 @@ namespace Users.FateX.Scripts
 
         public void OnSpawn()
         {
+            Visible = false;
+            
+            alreadyDie = false;
+            
             CurrentHealth = _enemyData.Health;
 
             _spriteRenderer.material.SetFloat("_FlashAmount", 0);
+            _spriteRenderer.material.SetFloat("_DissolveAmount", 0);
             
             // Сбрасываем цвет и масштаб при спавне
             if (_spriteRenderer != null)

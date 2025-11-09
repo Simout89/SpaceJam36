@@ -29,7 +29,7 @@ namespace Users.FateX.Scripts.Segments
 
             foreach (var collider in colliders)
             {
-                if (collider.TryGetComponent(out EnemyBase enemy))
+                if (collider.TryGetComponent(out EnemyBase enemy) && enemy.Visible)
                 {
                     float distance = Vector3.Distance(collider.transform.position, gunPivot.transform.position);
             
@@ -41,7 +41,7 @@ namespace Users.FateX.Scripts.Segments
                 }
             }
 
-            if (nearestCollider != null && nearestCollider.TryGetComponent(out EnemyBase nearestEnemy))
+            if (nearestCollider != null && nearestCollider.TryGetComponent(out EnemyBase nearestEnemy)  && nearestEnemy.Visible)
             {
                 Vector2 direction = nearestEnemy.transform.position - gunPivot.position;
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;

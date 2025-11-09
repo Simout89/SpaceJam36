@@ -11,7 +11,11 @@ namespace Users.FateX.Scripts
     public class SnakeHealth: MonoBehaviour
     {
         [SerializeField] private List<SnakeBodyPartHealth> snakeBodyPartHealths = new List<SnakeBodyPartHealth>();
+        [SerializeField] private List<SnakeBodyPart> snakeBodyParts = new List<SnakeBodyPart>();
         [SerializeField] private SnakeBodyPartHealth headHealth;
+        
+        [SerializeField] private float delayBetweenShots = 1f;
+        private float timeToNextShot = 0;
         
         public float MaxHealth { get; private set; } = 100f;
         public float CurrentHealth { get; private set; }
@@ -35,24 +39,38 @@ namespace Users.FateX.Scripts
             CurrentHealth = MaxHealth;
         }
 
-        public void Add(SnakeBodyPartHealth snakeBodyPartHealth)
+        public void Add(SnakeBodyPartHealth snakeBodyPartHealth, SnakeBodyPart snakeBodyPart)
         {
             snakeBodyPartHealths.Add(snakeBodyPartHealth);
+            snakeBodyParts.Add(snakeBodyPart);
 
             snakeBodyPartHealth.OnHealthChanged += HandleHealthChanged;
         }
 
 
-        public void Remove(SnakeBodyPartHealth snakeBodyPartHealth)
+        public void Remove(SnakeBodyPartHealth snakeBodyPartHealth, SnakeBodyPart snakeBodyPart)
         {
             snakeBodyPartHealth.OnHealthChanged -= HandleHealthChanged;
             
             snakeBodyPartHealths.Remove(snakeBodyPartHealth);
+            snakeBodyParts.Remove(snakeBodyPart);
         }
         private void HandleHealthChanged(float obj)
         {
+            if(Time.time < timeToNextShot)
+                return;
+
+            timeToNextShot = delayBetweenShots + Time.time;
+            
             Debug.Log("Змея получила урон");
             CurrentHealth -= obj;
+            
+            headHealth.GetComponent<SnakeBodyPart>().DamageEffect();
+
+            foreach (var VARIABLE in snakeBodyParts)
+            {
+                VARIABLE.DamageEffect();
+            }
 
             if (CurrentHealth <= 0)
             {

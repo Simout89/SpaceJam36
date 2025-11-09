@@ -26,6 +26,7 @@ namespace Users.FateX.Scripts
         public void Initialize()
         {
             Debug.Log("W");
+            
 
             Snake snake = _snakeSpawner.SpawnSnake();
             

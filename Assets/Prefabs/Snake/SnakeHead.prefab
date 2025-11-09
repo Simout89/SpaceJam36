@@ -57,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 076ab8ca43223934d8521112f5520c33, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,6 +110,14 @@ PrefabInstance:
       propertyPath: <SnakeBodyPartHealth>k__BackingField
       value: 
       objectReference: {fileID: 3167726088941853797}
+    - target: {fileID: 2843160220030740129, guid: 46d0cb61cdd3f064fbd4b78c9fa319f2, type: 3}
+      propertyPath: <SnakeBodySpriteRenderers>k__BackingField.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843160220030740129, guid: 46d0cb61cdd3f064fbd4b78c9fa319f2, type: 3}
+      propertyPath: '<SnakeBodySpriteRenderers>k__BackingField.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8448370162551464905}
     - target: {fileID: 3080909686996504229, guid: 46d0cb61cdd3f064fbd4b78c9fa319f2, type: 3}
       propertyPath: m_Color.b
       value: 0.427362
@@ -256,7 +264,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Users.FateX.Scripts.SnakeHealth
   snakeBodyPartHealths: []
+  snakeBodyParts: []
   headHealth: {fileID: 241531922277075790}
+  delayBetweenShots: 0.1
 --- !u!114 &3167726088941853797
 MonoBehaviour:
   m_ObjectHideFlags: 0

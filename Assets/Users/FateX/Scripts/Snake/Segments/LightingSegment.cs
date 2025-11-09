@@ -36,7 +36,7 @@ namespace Users.FateX.Scripts.Segments
             
             foreach (var collider in colliders)
             {
-                if (collider.TryGetComponent(out EnemyBase enemy))
+                if (collider.TryGetComponent(out EnemyBase enemy) && enemy.Visible)
                 {
                     enemies.Add(enemy);
                 }

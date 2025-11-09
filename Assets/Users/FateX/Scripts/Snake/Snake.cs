@@ -77,7 +77,7 @@ public class Snake : MonoBehaviour
         Transform last = segments[segments.Count - 1];
         newSegment.transform.position = last.position;
         segments.Add(newSegment.transform);
-        snakeHealth.Add(newSegment.SnakeBodyPartHealth);
+        snakeHealth.Add(newSegment.SnakeBodyPartHealth, newSegment);
         snakeInteraction.AddTrigger(newSegment.TriggerDetector);
 
         ChangeBodyVariants(newSegment);
@@ -109,7 +109,7 @@ public class Snake : MonoBehaviour
         Transform last = segments[segments.Count - 1];
         newSegment.transform.position = last.position;
         segments.Add(newSegment.transform);
-        snakeHealth.Add(newSegment.SnakeBodyPartHealth);
+        snakeHealth.Add(newSegment.SnakeBodyPartHealth, newSegment);
         snakeInteraction.AddTrigger(newSegment.TriggerDetector);
 
         

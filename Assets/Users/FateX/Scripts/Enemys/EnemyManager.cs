@@ -35,7 +35,7 @@ public class EnemyManager : MonoBehaviour
 
     private void StartSwing(EnemyBase enemy)
     {
-        enemy.transform.DORotate(new Vector3(0, 0, -swingAngle), swingDuration)
+        enemy.body.DORotate(new Vector3(0, 0, -swingAngle), swingDuration)
             .From(new Vector3(0, 0, swingAngle))
             .SetEase(Ease.InOutSine)
             .SetLoops(-1, LoopType.Yoyo)
@@ -60,7 +60,6 @@ public class EnemyManager : MonoBehaviour
         // Останавливаем анимацию покачивания
         DOTween.Kill(enemyBase);
         
-        enemyBase.DropXp();
         LeanPool.Despawn(enemyBase.gameObject);
     }
 
@@ -88,7 +87,7 @@ public class EnemyManager : MonoBehaviour
             {
                 Vector3 scale = _originalScales[_enemies[i]];
                 scale.x = direction.x < 0 ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
-                _enemies[i].transform.localScale = scale;
+                _enemies[i].body.localScale = scale;
             }
             
             _enemies[i].Move(direction * (Time.deltaTime * enemySpeed));

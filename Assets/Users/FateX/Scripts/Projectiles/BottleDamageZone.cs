@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using FMODUnity;
 using Lean.Pool;
 using UnityEngine;
 
@@ -42,6 +43,7 @@ namespace Users.FateX.Scripts
 
         public void OnSpawn()
         {
+            RuntimeManager.PlayOneShot("event:/SFX/Player/WaterBOOM");
             LeanPool.Despawn(gameObject, 3f);
         }
 

@@ -1,6 +1,7 @@
 ﻿using Lean.Pool;
 using UnityEngine;
 using System.Collections.Generic;
+using FMODUnity;
 
 namespace Users.FateX.Scripts.Segments
 {
@@ -57,6 +58,9 @@ namespace Users.FateX.Scripts.Segments
                 
                 var newProjectile = LeanPool.Spawn(lightingPrefab, targetEnemy.transform.position, Quaternion.identity);
                 targetEnemy.TakeDamage(new DamageInfo(damage));
+                
+                RuntimeManager.PlayOneShot("event:/SFX/Player/p_Lightning");
+                
                 LeanPool.Despawn(newProjectile, 0.5f);
                 
                 // Удаляем врага из списка, чтобы не попасть в него повторно

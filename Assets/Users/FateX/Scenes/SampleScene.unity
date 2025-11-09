@@ -12101,6 +12101,69 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1745578820317491645, guid: b9b414b1a8c0078409c32ec99f8b9d1b, type: 3}
   m_PrefabInstance: {fileID: 381042356}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &381934076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 381934077}
+  - component: {fileID: 381934078}
+  m_Layer: 0
+  m_Name: FMOD MUSIC
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &381934077
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381934076}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.37883, y: 1.35921, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &381934078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381934076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -394415347
+      Data2: 1097949536
+      Data3: 819526016
+      Data4: 1652667126
+    Path: event:/Music/MainMusic
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &383046214 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8616533564751413674, guid: da532416fe9f3ab4b9f56341054b7298, type: 3}
@@ -66434,6 +66497,7 @@ SceneRoots:
   - {fileID: 1164852980}
   - {fileID: 133734600}
   - {fileID: 1456510383}
+  - {fileID: 381934077}
   - {fileID: 1845292238}
   - {fileID: 1633854106}
   - {fileID: 1560136116}

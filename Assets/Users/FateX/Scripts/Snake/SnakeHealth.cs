@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Action = System.Action;
@@ -53,6 +54,7 @@ namespace Users.FateX.Scripts
 
             if (CurrentHealth <= 0)
             {
+                RuntimeManager.PlayOneShot("event:/SFX/Player/p_Death");
                 DOTween.KillAll();
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }

@@ -4,6 +4,7 @@ using UnityEngine;
 using Users.FateX.Scripts.Data;
 using Users.FateX.Scripts.Entity;
 using DG.Tweening;
+using FMODUnity;
 
 namespace Users.FateX.Scripts
 {
@@ -48,6 +49,8 @@ namespace Users.FateX.Scripts
             // Визуальная индикация урона
             PlayDamageIndication();
             
+            RuntimeManager.PlayOneShot("event:/SFX/Enemy/e_Death");
+
             OnHealthChanged?.Invoke(CurrentHealth);
             
             if(CurrentHealth <= 0)

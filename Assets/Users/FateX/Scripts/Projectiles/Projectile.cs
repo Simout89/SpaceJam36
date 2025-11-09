@@ -22,7 +22,7 @@ namespace Users.FateX.Scripts
             
             // Поворачиваем снаряд в направлении движения
             float angle = Mathf.Atan2(_direction.y, _direction.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            // transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             
             LeanPool.Despawn(gameObject, 10f);
         }
@@ -38,7 +38,7 @@ namespace Users.FateX.Scripts
             _rigidbody2D.linearVelocity = _direction * _speed;
             
             // Устанавливаем вращение снаряда
-            transform.rotation = rotation;
+            // transform.rotation = rotation;
             
             LeanPool.Despawn(gameObject, 10f);
         }

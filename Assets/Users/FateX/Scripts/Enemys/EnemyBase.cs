@@ -3,6 +3,7 @@ using Lean.Pool;
 using UnityEngine;
 using Users.FateX.Scripts.Data;
 using Users.FateX.Scripts.Entity;
+using DG.Tweening;
 
 namespace Users.FateX.Scripts
 {
@@ -10,8 +11,16 @@ namespace Users.FateX.Scripts
     {
         [SerializeField] private EnemyData _enemyData;
         [SerializeField] private Rigidbody2D _rigidbody2D;
-
         [SerializeField] private XpEntity _xp;
+        
+        [Header("Damage Indication")]
+        [SerializeField] private SpriteRenderer _spriteRenderer;
+        [SerializeField] private Color _damageColor = Color.red;
+        [SerializeField] private float _damageDuration = 0.2f;
+        [SerializeField] private float _damageScalePunch = 0.15f;
+        
+        private Color _originalColor;
+        private Sequence _damageSequence;
         
         public float CurrentHealth { get; private set; }
         public event Action<float> OnHealthChanged;
@@ -20,11 +29,15 @@ namespace Users.FateX.Scripts
         private void Awake()
         {
             CurrentHealth = _enemyData.Health;
+            
+            if (_spriteRenderer != null)
+            {
+                _originalColor = _spriteRenderer.color;
+            }
         }
 
         public void Move(Vector3 direction)
         {
-            // transform.position = transform.position + direction;
             _rigidbody2D.linearVelocity = direction;
         }
 
@@ -32,8 +45,31 @@ namespace Users.FateX.Scripts
         {
             CurrentHealth -= damageInfo.Amount;
             
+            // Визуальная индикация урона
+            PlayDamageIndication();
+            
+            OnHealthChanged?.Invoke(CurrentHealth);
+            
             if(CurrentHealth <= 0)
                 OnDie?.Invoke(this);
+        }
+
+        private void PlayDamageIndication()
+        {
+            // Останавливаем предыдущую анимацию, если она была
+            _damageSequence?.Kill();
+            
+            _damageSequence = DOTween.Sequence();
+            
+            // Изменение цвета
+            if (_spriteRenderer != null)
+            {
+                _damageSequence.Append(_spriteRenderer.DOColor(_damageColor, _damageDuration / 2f));
+                _damageSequence.Append(_spriteRenderer.DOColor(_originalColor, _damageDuration / 2f));
+            }
+            
+            // Эффект "удара" (небольшое увеличение и уменьшение размера)
+            _damageSequence.Join(transform.DOPunchScale(Vector3.one * _damageScalePunch, _damageDuration, 1, 0.5f));
         }
 
         public void DropXp()
@@ -43,8 +79,6 @@ namespace Users.FateX.Scripts
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            Debug.Log(other.gameObject.name);
-            
             if(other.gameObject.TryGetComponent(out SnakeBodyPartHealth snakeBodyPartHealth))
             {
                 DamageInfo damageInfo = new DamageInfo(2);
@@ -56,11 +90,25 @@ namespace Users.FateX.Scripts
         public void OnSpawn()
         {
             CurrentHealth = _enemyData.Health;
+            
+            // Сбрасываем цвет и масштаб при спавне
+            if (_spriteRenderer != null)
+            {
+                _spriteRenderer.color = _originalColor;
+            }
+            transform.localScale = Vector3.one;
+            
+            _damageSequence?.Kill();
         }
 
         public void OnDespawn()
         {
-            
+            _damageSequence?.Kill();
+        }
+
+        private void OnDestroy()
+        {
+            _damageSequence?.Kill();
         }
     }
 

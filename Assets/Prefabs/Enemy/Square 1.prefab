@@ -30,8 +30,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.40156, y: 0.10973, z: 0}
-  m_LocalScale: {x: 0.6849, y: 0.6849, z: 0.6849}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.90000004, y: 0.90000004, z: 0.90000004}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8430335746142920909}
   m_Father: {fileID: 0}
@@ -83,8 +83,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.021515131, a: 1}
+  m_Sprite: {fileID: 7608904168083050899, guid: e7c2ee32ce3f10f459d23b50aaf0ab75, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -109,6 +109,10 @@ MonoBehaviour:
   _enemyData: {fileID: 11400000, guid: 88116dc9a7303664080f320c0344a310, type: 2}
   _rigidbody2D: {fileID: 3453197126848277838}
   _xp: {fileID: -2962457476948072884, guid: b9b414b1a8c0078409c32ec99f8b9d1b, type: 3}
+  _spriteRenderer: {fileID: 0}
+  _damageColor: {r: 1, g: 1, b: 1, a: 1}
+  _damageDuration: 0.2
+  _damageScalePunch: 0.15
 --- !u!50 &3453197126848277838
 Rigidbody2D:
   serializedVersion: 5
@@ -199,7 +203,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.485, z: 0}
-  m_LocalScale: {x: 0.41870344, y: 0.08843626, z: 0.41870344}
+  m_LocalScale: {x: 0.27764225, y: 0.058642086, z: 0.27764225}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6788877009436376216}

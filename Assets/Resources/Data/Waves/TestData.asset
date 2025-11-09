@@ -18,4 +18,6 @@ MonoBehaviour:
   - <DiffMarker>k__BackingField: 15
     <Enemy>k__BackingField: {fileID: 2172284294067600571, guid: fee591ff17534c54e981b30e16469c67, type: 3}
   - <DiffMarker>k__BackingField: 30
+    <Enemy>k__BackingField: {fileID: 2172284294067600571, guid: 0d8a4eb3aba7d264db4f5c17a949d120, type: 3}
+  - <DiffMarker>k__BackingField: 45
     <Enemy>k__BackingField: {fileID: 2172284294067600571, guid: 6325e8918d1b7eb4b934f0e36e500397, type: 3}

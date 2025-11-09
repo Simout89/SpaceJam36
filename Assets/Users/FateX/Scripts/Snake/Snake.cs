@@ -20,9 +20,13 @@ public class Snake : MonoBehaviour
     [Header("References")]
     [SerializeField] private SnakeBodyPart segmentPrefab;
     [SerializeField] private SnakeHealth snakeHealth;
+    [SerializeField] private SnakeInteraction snakeInteraction;
     
     private List<Transform> segments = new List<Transform>();
     public List<Transform> Segments => segments;
+
+    private int currentColor = 0;
+    
     public void Init(IInputService inputService)
     {
         _inputService = inputService;
@@ -55,14 +59,15 @@ public class Snake : MonoBehaviour
             Transform prev = segments[i - 1];
             Transform curr = segments[i];
 
-            float distance = Vector3.Distance(prev.position, curr.position);
+            Vector3 targetPosition = prev.position - prev.up * segmentDistance;
+            curr.position = Vector3.Lerp(curr.position, targetPosition, Time.deltaTime * 10f);
             
-            if(distance > segmentDistance)
+            Vector3 direction = prev.position - curr.position;
+            if (direction != Vector3.zero)
             {
-                Vector3 direction = (prev.position - curr.position).normalized;
-                curr.position += direction * (distance - segmentDistance);
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+                curr.rotation = Quaternion.Lerp(curr.rotation, Quaternion.Euler(0, 0, angle), Time.deltaTime * 10f);
             }
-            curr.rotation = Quaternion.Lerp(curr.rotation, prev.rotation, 0.5f);
         }
     }
 
@@ -73,9 +78,31 @@ public class Snake : MonoBehaviour
         newSegment.transform.position = last.position;
         segments.Add(newSegment.transform);
         snakeHealth.Add(newSegment.SnakeBodyPartHealth);
-        
+        snakeInteraction.AddTrigger(newSegment.TriggerDetector);
+
+        ChangeBodyVariants(newSegment);
     }
-    
+
+    private void ChangeBodyVariants(SnakeBodyPart newSegment)
+    {
+        foreach (var bodyVariant in newSegment.SnakeBodyVariants)
+        {
+            foreach (var bodyParts in bodyVariant.BodyParts)
+            {
+                bodyParts.SetActive(false);
+            }
+        }
+        
+        foreach (var bodyParts in newSegment.SnakeBodyVariants[currentColor].BodyParts)
+        {
+            bodyParts.SetActive(true);
+        }
+        
+        currentColor++;
+        if (currentColor >= 3)
+            currentColor = 0;
+    }
+
     public void Grow(SnakeBodyPart snakeBodyPart)
     {
         var newSegment = Instantiate(snakeBodyPart);
@@ -83,7 +110,10 @@ public class Snake : MonoBehaviour
         newSegment.transform.position = last.position;
         segments.Add(newSegment.transform);
         snakeHealth.Add(newSegment.SnakeBodyPartHealth);
+        snakeInteraction.AddTrigger(newSegment.TriggerDetector);
+
         
+        ChangeBodyVariants(newSegment);
     }
     
 #if UNITY_EDITOR

@@ -98,6 +98,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 214576750867962039, guid: 46d0cb61cdd3f064fbd4b78c9fa319f2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 214576750867962039, guid: 46d0cb61cdd3f064fbd4b78c9fa319f2, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2843160220030740129, guid: 46d0cb61cdd3f064fbd4b78c9fa319f2, type: 3}
       propertyPath: <SnakeBodyPartHealth>k__BackingField
       value: 
@@ -164,7 +172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8059494009225979289, guid: 46d0cb61cdd3f064fbd4b78c9fa319f2, type: 3}
       propertyPath: m_Name
-      value: Circle Variant
+      value: SnakeHead
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -218,9 +226,10 @@ MonoBehaviour:
   rotationSpeed: 200
   speed: 5
   startSize: 0
-  segmentDistance: 0.7
-  segmentPrefab: {fileID: 2843160220030740129, guid: e03707c7f68bfac44b73b2f185f7803b, type: 3}
+  segmentDistance: 0.4
+  segmentPrefab: {fileID: 2843160220030740129, guid: fb61a1174961acb429da835096b9d75b, type: 3}
   snakeHealth: {fileID: 8329123155480353806}
+  snakeInteraction: {fileID: 8178039842898366849}
 --- !u!114 &8178039842898366849
 MonoBehaviour:
   m_ObjectHideFlags: 0

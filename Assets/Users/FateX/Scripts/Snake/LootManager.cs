@@ -27,7 +27,7 @@ namespace Users.FateX.Scripts
 
         public void Dispose()
         {
-            snakeInteraction.OnCollect += HandleCollect;
+            // snakeInteraction.OnCollect += HandleCollect;
         }
     }
 }

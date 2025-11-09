@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.485, z: 0}
-  m_LocalScale: {x: 0.41870344, y: 0.08843626, z: 0.41870344}
+  m_LocalScale: {x: 0.27634427, y: 0.058367934, z: 0.27634427}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6788877009436376216}
@@ -120,8 +120,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.40156, y: 0.10973, z: 0}
-  m_LocalScale: {x: 0.6849, y: 0.6849, z: 0.6849}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6185477534278309131}
   m_Father: {fileID: 0}
@@ -173,8 +173,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.93436277, b: 0, a: 1}
+  m_Sprite: {fileID: -4265451720210088977, guid: 95dad648d5cea6949a98a1a863fd7b15, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -198,7 +198,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Users.FateX.Scripts.Enemy
   _enemyData: {fileID: 11400000, guid: 305921f435c5ec443a92b2687423c268, type: 2}
   _rigidbody2D: {fileID: 7671955484761025550}
-  _xp: {fileID: -2962457476948072884, guid: b9b414b1a8c0078409c32ec99f8b9d1b, type: 3}
+  _xp: {fileID: -2962457476948072884, guid: 09dfc6d53582cec4e94e4090943a56bc, type: 3}
+  _spriteRenderer: {fileID: 0}
+  _damageColor: {r: 1, g: 1, b: 1, a: 1}
+  _damageDuration: 0.2
+  _damageScalePunch: 0.15
 --- !u!50 &7671955484761025550
 Rigidbody2D:
   serializedVersion: 5

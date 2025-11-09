@@ -48,8 +48,11 @@ namespace Users.FateX.Scripts.Enemys
                     break;
                 }
             }
-    
-            _enemySpawner.SpawnEnemy(_waveData.WaveChangeSpawns[currentEnemyIndex].Enemy);
+
+            for (int i = 0; i < 2; i++)
+            {
+                _enemySpawner.SpawnEnemy(_waveData.WaveChangeSpawns[currentEnemyIndex].Enemy);
+            }
         }
         
         private float GetDifficultyMultiplier(float t)

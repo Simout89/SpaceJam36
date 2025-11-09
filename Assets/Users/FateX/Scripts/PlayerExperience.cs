@@ -1,4 +1,5 @@
 ﻿using System;
+using FMODUnity;
 using UnityEngine;
 using Users.FateX.Scripts.View;
 using Zenject;
@@ -21,7 +22,8 @@ namespace Users.FateX.Scripts
             CurrentXp += value;
             
             OnChangeXp?.Invoke();
-
+            RuntimeManager.PlayOneShot("event:/SFX/Player/p_XpPickUP");
+            
             if (CurrentXp >= NextLevelXp)
             {
                 UpLevel();
@@ -34,6 +36,7 @@ namespace Users.FateX.Scripts
             UpdateLevelXpRequirement();
             CurrentXp = 0;
             CurrentLevel++;
+            RuntimeManager.PlayOneShot("event:/SFX/Player/LvlUP");
             OnChangeXp?.Invoke();
         }
 

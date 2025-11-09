@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Action = System.Action;
 
 namespace Users.FateX.Scripts
@@ -48,6 +50,12 @@ namespace Users.FateX.Scripts
         {
             Debug.Log("Змея получила урон");
             CurrentHealth -= obj;
+
+            if (CurrentHealth <= 0)
+            {
+                DOTween.KillAll();
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
             OnHealthChanged?.Invoke();
         }
     }

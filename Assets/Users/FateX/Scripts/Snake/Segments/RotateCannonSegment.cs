@@ -1,4 +1,5 @@
 ﻿using System;
+using FMODUnity;
 using Lean.Pool;
 using UnityEngine;
 
@@ -53,6 +54,8 @@ namespace Users.FateX.Scripts.Segments
 
                 timeToNextShot = Time.time + delayBetweenShots;
 
+                RuntimeManager.PlayOneShot("event:/SFX/Player/p_Shoot");
+                
                 var newProjectile = LeanPool.Spawn(projectilePrefab, gunPivot.position, Quaternion.identity);
                 newProjectile.Initialize(direction.normalized, 10, damage);
             }

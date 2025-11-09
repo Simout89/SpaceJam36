@@ -18,7 +18,7 @@ namespace Users.FateX.Scripts.View
 
         private void OnDisable()
         {
-            _snakeHealth.OnHealthChanged -= HandleChanged;
+            // _snakeHealth.OnHealthChanged -= HandleChanged;
         }
 
         private void HandleChanged()

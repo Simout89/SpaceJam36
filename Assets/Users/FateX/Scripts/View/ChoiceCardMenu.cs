@@ -20,7 +20,7 @@ namespace Users.FateX.Scripts.View
 
         private void Awake()
         {
-            SpawnCards(3);
+            SpawnCards(2);
         }
 
         public void ShowMenu()

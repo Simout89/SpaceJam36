@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -88.5}
-  m_SizeDelta: {x: 320.2418, y: 50}
+  m_AnchoredPosition: {x: -0, y: -173.45114}
+  m_SizeDelta: {x: 322.9823, y: 219.9022}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4533340777197294700
 CanvasRenderer:
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Damage: <color=#DB8536>1'
+  m_text: Targets nearby enemies and fires a homing bolt.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b83a37bbbe4cabf418bf5640bb9e47ab, type: 2}
   m_sharedMaterial: {fileID: 7444734582570712598, guid: b83a37bbbe4cabf418bf5640bb9e47ab, type: 2}
@@ -414,7 +414,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Auto Gun
+  m_text: Auto Turret
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b83a37bbbe4cabf418bf5640bb9e47ab, type: 2}
   m_sharedMaterial: {fileID: 7444734582570712598, guid: b83a37bbbe4cabf418bf5640bb9e47ab, type: 2}

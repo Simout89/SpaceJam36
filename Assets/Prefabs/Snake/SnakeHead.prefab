@@ -108,7 +108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 214576750867962039, guid: 46d0cb61cdd3f064fbd4b78c9fa319f2, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
-      value: 0
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 2843160220030740129, guid: 46d0cb61cdd3f064fbd4b78c9fa319f2, type: 3}
       propertyPath: <SnakeBodyPartHealth>k__BackingField
@@ -183,6 +183,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7926201795747813440, guid: 46d0cb61cdd3f064fbd4b78c9fa319f2, type: 3}
+      propertyPath: m_Radius
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926201795747813440, guid: 46d0cb61cdd3f064fbd4b78c9fa319f2, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
       value: 64
       objectReference: {fileID: 0}
@@ -210,6 +214,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8059494009225979289, guid: 46d0cb61cdd3f064fbd4b78c9fa319f2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3167726088941853797}
+    - targetCorrespondingSourceObject: {fileID: 8059494009225979289, guid: 46d0cb61cdd3f064fbd4b78c9fa319f2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1458377375279185330}
   m_SourcePrefab: {fileID: 100100000, guid: 46d0cb61cdd3f064fbd4b78c9fa319f2, type: 3}
 --- !u!114 &241531922277075790 stripped
 MonoBehaviour:
@@ -246,6 +253,7 @@ MonoBehaviour:
   segmentPrefab: {fileID: 2843160220030740129, guid: fb61a1174961acb429da835096b9d75b, type: 3}
   snakeHealth: {fileID: 8329123155480353806}
   snakeInteraction: {fileID: 8178039842898366849}
+  snakeStats: {fileID: -1458377375279185330}
 --- !u!114 &8178039842898366849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +295,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c80436fbaf347cca8d44ccb37c41c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Users.FateX.Scripts.SnakeBodyPartHealth
+--- !u!114 &-1458377375279185330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5023116472967737156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 901d861a18b067e4b8664a0a15c02d8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SnakeStats
+  Damage: 0
+  FireRate: 0
+  ProjectileCount: 1
+  Range: 0
+  Health: 0
 --- !u!4 &7827709020974421666 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5101796803513621631, guid: 46d0cb61cdd3f064fbd4b78c9fa319f2, type: 3}

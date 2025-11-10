@@ -9,32 +9,40 @@ using Users.FateX.Scripts.View;
 public class EnemyManager : MonoBehaviour
 {
     [SerializeField] private DamageCounter _damageCounter;
-    
-    private Snake _snake;
-    private float enemySpeed = 100f;
+
+    [Header("Параметры врагов")]
+    private int maxEnemies = 50; // лимит врагов
+    [SerializeField] private float enemySpeed = 100f;
     
     [Header("Настройки покачивания")]
     [SerializeField] private float swingAngle = 10f;
     [SerializeField] private float swingDuration = 0.8f;
     
+    private Snake _snake;
     private List<EnemyBase> _enemies = new List<EnemyBase>();
     private Dictionary<EnemyBase, Vector3> _originalScales = new Dictionary<EnemyBase, Vector3>();
+
+    public int EnemyCount => _enemies.Count;
+    public bool CanSpawn => _enemies.Count < maxEnemies; // флаг, можно ли спавнить
 
     public void SetSnake(Snake snake)
     {
         _snake = snake;
     }
-    
+
     public void AddEnemy(EnemyBase enemyBase)
     {
+        if (!CanSpawn)
+        {
+            LeanPool.Despawn(enemyBase.gameObject);
+            return; // не добавляем, если достигнут лимит
+        }
+
         _enemies.Add(enemyBase);
         _originalScales[enemyBase] = enemyBase.transform.localScale;
 
         enemyBase.OnDie += HandleDie;
-        
         enemyBase.OnTakeDamage += (newHealth) => HandleHealthChanged(enemyBase, newHealth);
-        
-        // Запускаем покачивание
         StartSwing(enemyBase);
     }
 
@@ -59,7 +67,6 @@ public class EnemyManager : MonoBehaviour
         {
             enemy.OnDie -= HandleDie;
             enemy.OnTakeDamage -= (newHealth) => HandleHealthChanged(enemy, newHealth);
-
             DOTween.Kill(enemy);
         }
     }
@@ -68,43 +75,39 @@ public class EnemyManager : MonoBehaviour
     {
         _enemies.Remove(enemyBase);
         _originalScales.Remove(enemyBase);
+
         enemyBase.OnDie -= HandleDie;
         enemyBase.OnTakeDamage -= (newHealth) => HandleHealthChanged(enemyBase, newHealth);
 
-        
-        // Останавливаем анимацию покачивания
         DOTween.Kill(enemyBase);
-        
         LeanPool.Despawn(enemyBase.gameObject);
     }
 
     public void FixedUpdate()
     {
         if (_snake == null || _snake.Segments.Count == 0) return;
-        
+
         for (int i = 0; i < _enemies.Count; i++)
         {
             Transform nearestSegment = _snake.Segments[0];
-            
             for (int j = 0; j < _snake.Segments.Count; j++)
             {
-                if (Vector3.Distance(_snake.Segments[j].position, _enemies[i].transform.position) < 
+                if (Vector3.Distance(_snake.Segments[j].position, _enemies[i].transform.position) <
                     Vector3.Distance(nearestSegment.position, _enemies[i].transform.position))
                 {
                     nearestSegment = _snake.Segments[j];
                 }
             }
-            
+
             Vector3 direction = (nearestSegment.position - _enemies[i].transform.position).normalized;
-            
-            // Поворот врага лицом к змейке через scale.x
+
             if (_originalScales.ContainsKey(_enemies[i]))
             {
                 Vector3 scale = _originalScales[_enemies[i]];
                 scale.x = direction.x < 0 ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
                 _enemies[i].body.localScale = scale;
             }
-            
+
             _enemies[i].Move(direction * (Time.deltaTime * enemySpeed));
         }
     }

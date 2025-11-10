@@ -11,7 +11,29 @@ namespace Users.FateX.Scripts
         [SerializeField] private float damage = 3;
         [SerializeField] private float delayBetweenShots = 1f;
         [SerializeField] private float radius = 5f;
+
+        [SerializeField] private Transform _transform;
+        
         private float timeToNextShot = 0;
+        
+        private float initialRadius; // Сохраняем начальный радиус
+        private float initialDamage; // Сохраняем начальный радиус
+
+        private void Awake()
+        {
+            initialRadius = radius;
+            initialDamage = damage;
+        }
+
+        public void Init(float damage, float radius)
+        {
+            this.damage += damage;
+            this.radius += radius;
+            
+            // Рассчитываем коэффициент изменения радиуса и применяем к scale
+            float scaleMultiplier = this.radius / initialRadius;
+            _transform.localScale = Vector3.one * scaleMultiplier;
+        }
         
         private void FixedUpdate()
         {
@@ -49,7 +71,10 @@ namespace Users.FateX.Scripts
 
         public void OnDespawn()
         {
+            damage = initialDamage;
             
+            radius = initialRadius;
+            _transform.localScale = Vector3.one;
         }
         
         public void OnDrawGizmos()

@@ -11,6 +11,8 @@ namespace Users.FateX.Scripts
         [field: SerializeField] public SnakeBodyVariant[] SnakeBodyVariants { get; private set; }
         [field: SerializeField] public SpriteRenderer[] SnakeBodySpriteRenderers { get; private set; }
 
+        public SnakeStats SnakeStats;
+
         public void DamageEffect()
         {
             foreach (var VARIABLE in SnakeBodySpriteRenderers)

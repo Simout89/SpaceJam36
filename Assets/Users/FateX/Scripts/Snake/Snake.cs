@@ -19,6 +19,7 @@ public class Snake : MonoBehaviour
     [SerializeField] private SnakeBodyPart segmentPrefab;
     [SerializeField] private SnakeHealth snakeHealth;
     [SerializeField] private SnakeInteraction snakeInteraction;
+    [SerializeField] private SnakeStats snakeStats;
 
     private readonly List<Transform> segments = new List<Transform>();
     public List<Transform> Segments => segments;
@@ -94,6 +95,7 @@ public class Snake : MonoBehaviour
         snakeHealth.Add(newSegment.SnakeBodyPartHealth, newSegment);
         snakeInteraction.AddTrigger(newSegment.TriggerDetector);
 
+        newSegment.SnakeStats = snakeStats;
         ChangeBodyVariants(newSegment);
     }
     
@@ -106,7 +108,7 @@ public class Snake : MonoBehaviour
         snakeHealth.Add(newSegment.SnakeBodyPartHealth, newSegment);
         snakeInteraction.AddTrigger(newSegment.TriggerDetector);
 
-        
+        newSegment.SnakeStats = snakeStats;
         ChangeBodyVariants(newSegment);
     }
 

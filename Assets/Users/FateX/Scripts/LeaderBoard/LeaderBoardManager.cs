@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -12,7 +13,7 @@ namespace Users.FateX.Scripts.LeaderBoard
         private string supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBobWlhYXBwdnB6ZG9meWt5d3lpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI2OTI5OTcsImV4cCI6MjA3ODI2ODk5N30.qZVLQg0FLLbh8EEAluPSDrIoos2bVf1x-GCgYNoCylo";
 
         // Добавить счёт
-        public async void AddScore(string playerName, int score, Action<bool> onComplete = null)
+        public async Task AddScore(string playerName, int score, Action<bool> onComplete = null)
         {
             var entry = new LeaderboardEntry { player_name = playerName, score = score };
             string json = JsonUtility.ToJson(entry);
@@ -37,10 +38,12 @@ namespace Users.FateX.Scripts.LeaderBoard
         }
 
         // Получить топ игроков
+        // Получить топ игроков
         public async void GetTopScores(int limit, Action<List<LeaderboardEntry>> onComplete)
         {
-            string url = supabaseUrl + $"/rest/v1/leaderboard?select=player_name,score&order=score.desc&limit={limit}";
-            
+            // 👉 теперь обращаемся к view leaderboard_unique
+            string url = supabaseUrl + $"/rest/v1/leaderboard_unique?select=player_name,score&order=score.desc&limit={limit}";
+    
             using (UnityWebRequest request = UnityWebRequest.Get(url))
             {
                 request.SetRequestHeader("apikey", supabaseKey);
@@ -53,7 +56,7 @@ namespace Users.FateX.Scripts.LeaderBoard
                 {
                     string json = "{\"entries\":" + request.downloadHandler.text + "}";
                     var response = JsonUtility.FromJson<LeaderboardResponse>(json);
-                    Debug.Log($"✓ Получено записей: {response.entries.Count}");
+                    Debug.Log($"✓ Получено уникальных записей: {response.entries.Count}");
                     onComplete?.Invoke(response.entries);
                 }
                 else
@@ -63,6 +66,7 @@ namespace Users.FateX.Scripts.LeaderBoard
                 }
             }
         }
+
     }
 
     [Serializable]

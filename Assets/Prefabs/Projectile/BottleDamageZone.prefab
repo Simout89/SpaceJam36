@@ -48,6 +48,7 @@ MonoBehaviour:
   damage: 0.5
   delayBetweenShots: 0.5
   radius: 1.49
+  _transform: {fileID: 321483808777827126}
 --- !u!1001 &2615324510294515836
 PrefabInstance:
   m_ObjectHideFlags: 0

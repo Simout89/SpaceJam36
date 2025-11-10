@@ -1,4 +1,5 @@
-﻿using Users.FateX.Scripts.LeaderBoard;
+﻿using Users.FateX.Scripts;
+using Users.FateX.Scripts.LeaderBoard;
 using Zenject;
 using Скриптерсы.Services;
 
@@ -12,6 +13,9 @@ namespace Скриптерсы.Zenject
                 .AsSingle()
                 .NonLazy();
             Container.BindInterfacesAndSelfTo<LeaderboardManager>()
+                .AsSingle()
+                .NonLazy();
+            Container.BindInterfacesAndSelfTo<UserInfo>()
                 .AsSingle()
                 .NonLazy();
         }

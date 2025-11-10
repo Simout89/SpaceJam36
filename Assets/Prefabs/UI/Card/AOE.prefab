@@ -172,8 +172,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -88.5}
-  m_SizeDelta: {x: 320.2418, y: 50}
+  m_AnchoredPosition: {x: 0, y: -148.73174}
+  m_SizeDelta: {x: 288.5229, y: 170.4635}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2312072202893504770
 CanvasRenderer:
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Damage: <color=#DB8536>1'
+  m_text: Deals damage to all enemies around itself.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b83a37bbbe4cabf418bf5640bb9e47ab, type: 2}
   m_sharedMaterial: {fileID: 7444734582570712598, guid: b83a37bbbe4cabf418bf5640bb9e47ab, type: 2}
@@ -384,7 +384,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -28.200012}
-  m_SizeDelta: {x: 330.4095, y: 50}
+  m_SizeDelta: {x: 319.61, y: 48.3655}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5002413283078652179
 CanvasRenderer:
@@ -414,7 +414,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: AOE
+  m_text: Hex Ring
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b83a37bbbe4cabf418bf5640bb9e47ab, type: 2}
   m_sharedMaterial: {fileID: 7444734582570712598, guid: b83a37bbbe4cabf418bf5640bb9e47ab, type: 2}

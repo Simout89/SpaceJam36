@@ -10,18 +10,15 @@ namespace Users.FateX.Scripts.View
     public class ChoiceCardMenu: MonoBehaviour
     {
         [SerializeField] private ChoiceCard[] choiceCards;
+        [SerializeField] private ChoiceCard choiceCardStats;
         [SerializeField] private Transform cardContainer;
         [SerializeField] private GameObject menu;
 
         private const int maxCards = 3;
+        private const int MaxEnemies = 50;
 
         [Inject] private SnakeSpawner _snakeSpawner;
         [Inject] private GameStateManager _gameStateManager;
-
-        private void Awake()
-        {
-            SpawnCards(2);
-        }
 
         public void ShowMenu()
         {
@@ -35,7 +32,7 @@ namespace Users.FateX.Scripts.View
             _gameStateManager.ChangeState(GameStates.Play);
         }
 
-        public void SpawnCards(int amount)
+        public void SpawnCards(int amount, int statsCards = 0)
         {
             ShowMenu();
             
@@ -49,14 +46,23 @@ namespace Users.FateX.Scripts.View
                 
                 ChoiceCard capturedCard = newCard;
                 newCard.Button.onClick.AddListener(() => HandleClick(capturedCard));
-        
+                
                 randomCards.Remove(card);
             }
+
+            if (statsCards > 0)
+            {
+                var newCardStats = Instantiate(choiceCardStats, cardContainer);
+                newCardStats.Button.onClick.AddListener(() => HandleClick(newCardStats));
+                if(newCardStats.TryGetComponent(out ChoiceCardStats choiceCard)) choiceCard.Init(_snakeSpawner.SnakeStats);
+            }
+
         }
 
         private void HandleClick(ChoiceCard capturedCard)
         {
-            _snakeSpawner.Snake.Grow(capturedCard.SnakeBodyPart);
+            if(capturedCard.SnakeBodyPart != null)
+                _snakeSpawner.Snake.Grow(capturedCard.SnakeBodyPart);
             DeleteCards();
         }
 

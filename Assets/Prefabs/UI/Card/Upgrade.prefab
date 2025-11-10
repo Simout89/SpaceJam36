@@ -222,8 +222,8 @@ GameObject:
   - component: {fileID: 1682999767099369015}
   - component: {fileID: 4975317575016901791}
   - component: {fileID: 1264607678305186211}
-  - component: {fileID: 5816315617705874483}
   - component: {fileID: 1919904358786184543}
+  - component: {fileID: 6046247687812472335}
   m_Layer: 5
   m_Name: Upgrade
   m_TagString: Untagged
@@ -291,20 +291,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5816315617705874483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3908860495305719409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c4c6efd675e4769a9f81a0701ebf27a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Users.FateX.Scripts.View.ChoiceCard
-  <SnakeBodyPart>k__BackingField: {fileID: 2843160220030740129, guid: fb61a1174961acb429da835096b9d75b, type: 3}
-  <Button>k__BackingField: {fileID: 1919904358786184543}
 --- !u!114 &1919904358786184543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,6 +335,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6046247687812472335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3908860495305719409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2041d728ca35436698e233b0e436dbe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Users.FateX.Scripts.View.ChoiceCardStats
+  <SnakeBodyPart>k__BackingField: {fileID: 0}
+  <Button>k__BackingField: {fileID: 1919904358786184543}
+  _text: {fileID: 5539766827334796803}
 --- !u!1 &4643123982238043751
 GameObject:
   m_ObjectHideFlags: 0

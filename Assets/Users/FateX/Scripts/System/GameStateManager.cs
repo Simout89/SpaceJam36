@@ -37,6 +37,12 @@ namespace Скриптерсы
                         Cursor.lockState = CursorLockMode.None;
                     }
                         break;
+                    case GameStates.Death:
+                    {
+                        Time.timeScale = 0;
+                        Cursor.lockState = CursorLockMode.None;
+                    }
+                        break;
                 }
 
                 previousState = currentState;
@@ -49,6 +55,7 @@ namespace Скриптерсы
         public enum GameStates
         {
             Play, 
-            CardMenu
+            CardMenu,
+            Death
         }
     }

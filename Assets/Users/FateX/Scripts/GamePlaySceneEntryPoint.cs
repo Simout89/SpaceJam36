@@ -25,7 +25,10 @@ namespace Users.FateX.Scripts
         [Inject] private LootManager _lootManager;
 
         [Inject] private LeaderboardManager _leaderboardManager;
+        [Inject] private LeaderBoardView _leaderBoardView;
+        
         [Inject] private DeathHandler _deathHandler;
+        [Inject] private ChoiceCardMenu _choiceCardMenu;
 
         private EventInstance _eventInstance;
 
@@ -41,6 +44,12 @@ namespace Users.FateX.Scripts
             Snake snake = _snakeSpawner.SpawnSnake();
             
             _enemyManager.SetSnake(snake);
+            
+            _choiceCardMenu.SpawnCards(2);
+
+            // _leaderboardManager.AddScore("ааа", 4);
+            
+            // _leaderBoardView.ShowLeaderBoard();
             
             _healthView.Init(snake.GetComponent<SnakeHealth>());
             _deathHandler.Init(snake.GetComponent<SnakeHealth>());

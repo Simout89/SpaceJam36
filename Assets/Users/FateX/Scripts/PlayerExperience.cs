@@ -9,6 +9,7 @@ namespace Users.FateX.Scripts
     public class PlayerExperience
     {
         [Inject] private ChoiceCardMenu _choiceCardMenu;
+        [Inject] private SnakeSpawner _snakeSpawner;
 
         public float NextLevelXp { get; private set; } = 5;
         public float CurrentXp { get; private set; }
@@ -32,17 +33,18 @@ namespace Users.FateX.Scripts
 
         private void UpLevel()
         {
-            _choiceCardMenu.SpawnCards(3);
+            _choiceCardMenu.SpawnCards(2, 1);
             UpdateLevelXpRequirement();
             CurrentXp = 0;
             CurrentLevel++;
             RuntimeManager.PlayOneShot("event:/SFX/Player/LvlUP");
+            _snakeSpawner.Snake.GetComponent<SnakeHealth>().Heal();
             OnChangeXp?.Invoke();
         }
 
         private void UpdateLevelXpRequirement()
         {
-            NextLevelXp *= 1.5f;
+            NextLevelXp *= 1.35f;
         }
     }
 }

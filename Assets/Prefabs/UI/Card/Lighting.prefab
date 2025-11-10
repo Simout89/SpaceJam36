@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Damage: <color=#DB8536>1'
+  m_text: Strikes a random enemy with lightning.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b83a37bbbe4cabf418bf5640bb9e47ab, type: 2}
   m_sharedMaterial: {fileID: 7444734582570712598, guid: b83a37bbbe4cabf418bf5640bb9e47ab, type: 2}
@@ -414,7 +414,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Lighting
+  m_text: Storm Spark
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b83a37bbbe4cabf418bf5640bb9e47ab, type: 2}
   m_sharedMaterial: {fileID: 7444734582570712598, guid: b83a37bbbe4cabf418bf5640bb9e47ab, type: 2}

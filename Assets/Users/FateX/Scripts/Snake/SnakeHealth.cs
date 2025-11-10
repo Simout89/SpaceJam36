@@ -17,7 +17,7 @@ namespace Users.FateX.Scripts
         [SerializeField] private float delayBetweenShots = 1f;
         private float timeToNextShot = 0;
         
-        public float MaxHealth { get; private set; } = 100f;
+        public float MaxHealth { get; private set; } = 100;
         public float CurrentHealth { get; private set; }
         public event Action OnHealthChanged;
 
@@ -37,6 +37,12 @@ namespace Users.FateX.Scripts
         private void Awake()
         {
             CurrentHealth = MaxHealth;
+        }
+
+        public void Heal()
+        {
+            CurrentHealth = MaxHealth;
+            OnHealthChanged?.Invoke();
         }
 
         public void Add(SnakeBodyPartHealth snakeBodyPartHealth, SnakeBodyPart snakeBodyPart)

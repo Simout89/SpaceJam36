@@ -14,6 +14,12 @@ namespace Users.FateX.Scripts.Segments
         [SerializeField] private int shotsPerAttack = 3; // Количество выстрелов за раз
         [SerializeField] private float delayBetweenShots = 1f;
         private float timeToNextShot = 0;
+        private SnakeBodyPart snakeBodyPart;
+
+        private void Awake()
+        {
+            snakeBodyPart = GetComponent<SnakeBodyPart>();
+        }
 
         public void FixedUpdate()
         {
@@ -22,7 +28,7 @@ namespace Users.FateX.Scripts.Segments
                 return;
             }
 
-            timeToNextShot = Time.time + delayBetweenShots;
+            timeToNextShot = Time.time + Mathf.Max(0.8f, delayBetweenShots - snakeBodyPart.SnakeStats.FireRate / 10);
             
             Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
 
@@ -48,7 +54,7 @@ namespace Users.FateX.Scripts.Segments
             }
 
             // Определяем количество выстрелов (не больше чем врагов)
-            int actualShots = Mathf.Min(shotsPerAttack, enemies.Count);
+            int actualShots = Mathf.Min(Mathf.FloorToInt(snakeBodyPart.SnakeStats.ProjectileCount), enemies.Count);
 
             // Стреляем в случайных врагов без повторений
             for (int i = 0; i < actualShots; i++)
@@ -57,7 +63,7 @@ namespace Users.FateX.Scripts.Segments
                 EnemyBase targetEnemy = enemies[randomIndex];
                 
                 var newProjectile = LeanPool.Spawn(lightingPrefab, targetEnemy.transform.position, Quaternion.identity);
-                targetEnemy.TakeDamage(new DamageInfo(damage));
+                targetEnemy.TakeDamage(new DamageInfo(damage + snakeBodyPart.SnakeStats.Damage));
                 
                 RuntimeManager.PlayOneShot("event:/SFX/Player/p_Lightning");
                 

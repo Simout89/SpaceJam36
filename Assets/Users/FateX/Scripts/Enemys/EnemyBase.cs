@@ -42,6 +42,11 @@ namespace Users.FateX.Scripts
             }
         }
 
+        public void AddHealth(float value)
+        {
+            CurrentHealth += value;
+        }
+
         private void OnBecameVisible()
         {
             Visible = true;

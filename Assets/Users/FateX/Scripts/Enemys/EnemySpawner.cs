@@ -11,13 +11,15 @@ namespace Users.FateX.Scripts
         [Inject] private EnemySpawnArea _enemySpawnArea;
         [Inject] private EnemyManager _enemyManager;
 
-        public void SpawnEnemy(EnemyBase enemyPrefab)
+        public EnemyBase SpawnEnemy(EnemyBase enemyPrefab)
         {
             EnemyBase enemy = LeanPool.Spawn(enemyPrefab);
 
             enemy.transform.position = _enemySpawnArea.GetRandomPositionOnBorder();
             
             _enemyManager.AddEnemy(enemy);
+
+            return enemy;
         }
     }
 }

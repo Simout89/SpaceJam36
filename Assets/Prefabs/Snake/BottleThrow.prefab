@@ -587,7 +587,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 0.35
 --- !u!50 &-5035725687098079527
 Rigidbody2D:
   serializedVersion: 5
@@ -658,6 +658,7 @@ MonoBehaviour:
   - {fileID: 726334111154272181}
   - {fileID: 4328927222116348367}
   - {fileID: 7337229849458620740}
+  SnakeStats: {fileID: 0}
 --- !u!114 &701278064470778606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -686,7 +687,7 @@ CircleCollider2D:
     m_Bits: 512
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

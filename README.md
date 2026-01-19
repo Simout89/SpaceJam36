@@ -1,12 +1,14 @@
 # SnakeArena
 
 Игра, созданная за 3 дня в рамках геймджема. Заняли 2 место.
-https://itch.io/jam/sibgamejam-nov-2025/rate/4013482 https://sim-out.itch.io/blind-truth
+
+https://sim-out.itch.io/snake-arena
+https://itch.io/jam/scorejam36/rate/4023270
 
 =================================================
 
 A game created in 3 days for a game jam.
 Placed 2th overall.
 
-https://itch.io/jam/sibgamejam-nov-2025/rate/4013482
-https://sim-out.itch.io/blind-truth
+https://sim-out.itch.io/snake-arena
+https://itch.io/jam/scorejam36/rate/4023270
